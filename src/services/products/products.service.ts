@@ -20,7 +20,7 @@ export class ProductsService {
   }
 
   findOne(id: number) {
-    let product = this.products.find((p) => p.id === id);
+    const product = this.products.find((p) => p.id === id);
     if (!product) {
       throw new NotFoundException(`Product ${id} not found`);
     }
@@ -47,17 +47,17 @@ export class ProductsService {
       ...productFinded,
       ...payload,
     };
-    let productIndex = this.products.indexOf(productFinded);
+    const productIndex = this.products.indexOf(productFinded);
     this.products[productIndex] = productFinded;
     return productFinded;
   }
 
   delete(id: number) {
-    let productFinded = this.products.find((p) => p.id === id);
+    const productFinded = this.products.find((p) => p.id === id);
     if (!productFinded) {
       throw new NotFoundException(`Product ${id} not found`);
     }
-    let productIndex = this.products.indexOf(productFinded);
+    const productIndex = this.products.indexOf(productFinded);
     this.products.splice(productIndex, 1);
     return true;
   }
